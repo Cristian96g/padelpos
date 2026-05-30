@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PadelAdmin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#ffaed9",
+                        "primary-container": "#66a939",
+                        "primary": "#92d963",
+                        "secondary-fixed": "#d4e7d9",
+                        "inverse-primary": "#316b00",
+                        "tertiary-container": "#e66fb6",
+                        "outline": "#8b9481",
+                        "surface-tint": "#92d963",
+                        "tertiary-fixed-dim": "#ffaed9",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#620046",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#811960",
+                        "on-surface": "#e5e2e1",
+                        "surface-bright": "#3a3939",
+                        "on-primary-fixed": "#0a2100",
+                        "surface": "#131313",
+                        "on-tertiary-fixed": "#3c002a",
+                        "on-primary-fixed-variant": "#235100",
+                        "secondary-container": "#3f4f45",
+                        "secondary": "#b9cbbd",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-container": "#163800",
+                        "on-secondary": "#24342a",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353534",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#aec0b3",
+                        "background": "#131313",
+                        "on-tertiary": "#610046",
+                        "primary-fixed-dim": "#92d963",
+                        "secondary-fixed-dim": "#b9cbbd",
+                        "primary-fixed": "#adf67c",
+                        "tertiary-fixed": "#ffd8ea",
+                        "on-primary": "#163800",
+                        "on-secondary-fixed": "#0f1f16",
+                        "on-secondary-fixed-variant": "#3a4a40",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "outline-variant": "#41493a",
+                        "on-surface-variant": "#c1c9b5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "touch-target": "48px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "container-margin": "16px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: #121212;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.2s ease;
+        }
+        .glass-card:active {
+            transform: scale(0.98);
+            border-color: #92d963;
+        }
+        .status-glow {
+            box-shadow: 0 0 15px rgba(146, 217, 99, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-touch-target bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional close-up headshot of a young entrepreneur in a dark, minimalist studio. The lighting is dramatic, with high contrast shadows that highlight the clean, tech-focused aesthetic. The background is a soft-focus charcoal grey, maintaining a premium and sophisticated atmosphere consistent with high-end management software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf0MUbbz5LXzdsOCoF5DbqUshHpWjTcpHB5Cwk6IoOftm-lwHpKGWdbqjnuQTWBBBdShFTrtP5xq3KRx7TVqwaa8EQwa-sm1yjX3bG6s7XT5BScF7V_fR819K5kJ9gDLfzTKZi8iV7-iHy7zPMMAdKGg0WQoY1XR397f5MEabV89q3YGQAUkT0h2bkBWgqQNQJNMsqy-4vQRQpOZ3My7xwBvP7Ks-0qalEk0fDgWWqr1NFSUpSRUOo6t9j9v1wIiITD8xyYhAmzwI"/>
+</div>
+<span class="text-headline-sm font-headline-sm text-on-surface">Dashboard</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-transform active:scale-95">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</header>
+<main class="mt-20 px-container-margin space-y-lg max-w-screen-xl mx-auto">
+<!-- Metrics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">TOTAL DEL DÍA</p>
+<h2 class="font-display-lg text-display-lg text-primary">$142.500</h2>
+</div>
+<div class="mt-md flex items-center gap-xs text-primary/80">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm">+12% vs ayer</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md md:col-span-2">
+<div class="glass-card p-md rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase">Efectivo</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">$58.200</h3>
+</div>
+<div class="glass-card p-md rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase">Transferencia</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">$84.300</h3>
+</div>
+</div>
+</section>
+<!-- Status Highlights -->
+<section class="grid grid-cols-2 gap-md">
+<div class="glass-card p-lg rounded-xl border-l-4 border-l-error">
+<div class="flex justify-between items-start mb-md">
+<span class="material-symbols-outlined text-error">pending_actions</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-error/10 text-error px-2 py-0.5 rounded">8 PENDIENTES</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Pagos por validar</p>
+</div>
+<div class="glass-card p-lg rounded-xl border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-md">
+<span class="material-symbols-outlined text-primary">sports_tennis</span>
+<span class="font-label-sm text-label-sm text-on-primary-container bg-primary/20 text-primary px-2 py-0.5 rounded">4 ACTIVOS</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Canchas ocupadas</p>
+</div>
+</section>
+<!-- Income Chart Placeholder -->
+<section class="glass-card p-lg rounded-xl">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Ingresos de la semana</h3>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="w-3 h-3 rounded-full bg-white/10"></span>
+</div>
+</div>
+<div class="h-32 w-full flex items-end justify-between gap-2 px-2">
+<div class="w-full bg-white/5 rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-white/5 rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-white/5 rounded-t-sm h-[45%]"></div>
+<div class="w-full bg-white/5 rounded-t-sm h-[80%]"></div>
+<div class="w-full bg-primary rounded-t-sm h-[95%]"></div>
+<div class="w-full bg-white/5 rounded-t-sm h-[70%]"></div>
+<div class="w-full bg-white/5 rounded-t-sm h-[50%]"></div>
+</div>
+<div class="flex justify-between mt-sm px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">L</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">M</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">X</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">J</span>
+<span class="font-label-sm text-label-sm text-on-primary">V</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">D</span>
+</div>
+</section>
+<!-- Next Reservations -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Próximos Turnos</h3>
+<button class="text-primary font-label-md text-label-md">Ver todos</button>
+</div>
+<div class="space-y-md">
+<!-- Reservation Card 1 -->
+<div class="glass-card p-md rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="text-center bg-surface-container-high p-2 rounded-lg min-w-[56px]">
+<p class="font-label-sm text-label-sm text-on-surface-variant">17:30</p>
+<p class="font-headline-sm text-headline-sm text-primary">C1</p>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Carlos Thompson</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">4 jugadores • 90 min</p>
+</div>
+</div>
+<span class="bg-primary/10 text-primary font-label-sm text-label-sm px-3 py-1 rounded-full border border-primary/20">Pagado</span>
+</div>
+<!-- Reservation Card 2 -->
+<div class="glass-card p-md rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="text-center bg-surface-container-high p-2 rounded-lg min-w-[56px]">
+<p class="font-label-sm text-label-sm text-on-surface-variant">18:00</p>
+<p class="font-headline-sm text-headline-sm text-secondary">C2</p>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Reserva Web #429</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Libre • 60 min</p>
+</div>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm px-3 py-1 rounded-full">Pendiente</span>
+</div>
+<!-- Reservation Card 3 -->
+<div class="glass-card p-md rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="text-center bg-surface-container-high p-2 rounded-lg min-w-[56px]">
+<p class="font-label-sm text-label-sm text-on-surface-variant">19:00</p>
+<p class="font-headline-sm text-headline-sm text-primary">C1</p>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Valentina Ruiz</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Clase • 60 min</p>
+</div>
+</div>
+<span class="bg-error/10 text-error font-label-sm text-label-sm px-3 py-1 rounded-full border border-error/20">Deuda</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center transition-transform active:scale-90 z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-2 bg-surface dark:bg-surface border-t border-white/10 bg-surface/90 backdrop-blur-xl shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-full px-4 py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low rounded-xl px-2" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm mt-1">Turnos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low rounded-xl px-2" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-1">Consumos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low rounded-xl px-2" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm mt-1">Caja</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low rounded-xl px-2" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm mt-1">Más</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.borderColor = 'rgba(146, 217, 99, 0.4)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.borderColor = 'rgba(255, 255, 255, 0.06)';
+            });
+        });
+
+        // Simple animation for the bar chart on load
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.h-32 div');
+            bars.forEach((bar, index) => {
+                const finalHeight = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.transition = 'height 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67)';
+                    bar.style.height = finalHeight;
+                }, index * 50);
+            });
+        });
+    </script>
+</body></html>

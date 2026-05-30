@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  html {
+    @apply bg-app;
+  }
+
+  body {
+    @apply min-h-screen bg-app-glow text-content antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  button {
+    @apply outline-none transition duration-200 active:scale-[0.985];
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-[28px] border border-line bg-panel/90 shadow-card backdrop-blur-xl transition-all duration-200;
+  }
+
+  .surface-soft {
+    @apply rounded-3xl border border-line bg-panelSoft/90;
+  }
+
+  .pill-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-3 py-1.5 text-xs font-bold;
+  }
+
+  .section-title {
+    @apply text-xs font-extrabold uppercase tracking-[0.24em] text-muted;
+  }
+
+  .metric-label {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-muted;
+  }
+
+  .pressable-card {
+    @apply relative overflow-hidden transition-all duration-200 active:scale-[0.992] active:border-white/15;
+  }
+
+  .pressable-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.05) 50%, transparent 80%);
+    opacity: 0;
+    transition: opacity 200ms ease;
+    pointer-events: none;
+  }
+
+  .pressable-card:hover::after,
+  .pressable-card:active::after {
+    opacity: 1;
+  }
+
+  .button-secondary {
+    @apply rounded-2xl border border-line bg-white/5 text-content transition-all duration-200 active:scale-[0.98] active:bg-white/10;
+  }
+
+  .button-primary {
+    @apply rounded-2xl bg-primary text-[#13210c] shadow-glow transition-all duration-200 active:scale-[0.98] active:brightness-95;
+  }
+
+  .debt-pulse {
+    animation: debtPulse 2.2s ease-in-out infinite;
+  }
+
+  .sheet-handle {
+    animation: handleFloat 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes debtPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(255, 107, 107, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(255, 107, 107, 0.22);
+  }
+}
+
+@keyframes handleFloat {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translateY(1px);
+    opacity: 1;
+  }
+}

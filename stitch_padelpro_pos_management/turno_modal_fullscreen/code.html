@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Turno Fullscreen - PadelPro POS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            background: "#0b0f0c",
+            panel: "#121915",
+            panelSoft: "#19211d",
+            panelStrong: "#202a25",
+            line: "rgba(255,255,255,0.08)",
+            text: "#f2f5f2",
+            textSoft: "#9aa79e",
+            primary: "#66a939",
+            primaryStrong: "#7dca4b",
+            primaryDark: "#2d3d33",
+            danger: "#ff6b6b",
+            dangerSoft: "rgba(255,107,107,0.14)",
+            amber: "#f4b860",
+            amberSoft: "rgba(244,184,96,0.14)"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          boxShadow: {
+            glow: "0 10px 30px rgba(102,169,57,0.16)"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(102,169,57,0.14), transparent 30%),
+        linear-gradient(180deg, #0b0f0c 0%, #0a0d0b 100%);
+      color: #f2f5f2;
+      min-height: max(100dvh, 884px);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .card {
+      background: rgba(18, 25, 21, 0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .chip {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+  </style>
+</head>
+<body class="pb-44">
+  <header class="sticky top-0 z-40 border-b border-line bg-background/90 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-lg items-center justify-between px-4 pb-3 pt-4">
+      <div class="flex items-center gap-3">
+        <button class="flex h-11 w-11 items-center justify-center rounded-2xl border border-line bg-white/5">
+          <span class="material-symbols-outlined text-text">arrow_back</span>
+        </button>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.24em] text-primaryStrong">Turno activo</p>
+          <h1 class="text-xl font-extrabold text-text">20:00 - Cancha 1</h1>
+        </div>
+      </div>
+      <div class="rounded-full border border-red-400/20 bg-dangerSoft px-3 py-1 text-xs font-bold text-danger">
+        DEBE $8.000
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-lg space-y-4 px-4 pt-4">
+    <section class="card rounded-[24px] p-4 shadow-glow">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p class="text-sm font-semibold text-textSoft">Cliente principal</p>
+          <h2 class="text-lg font-extrabold text-text">Roman Alvarez</h2>
+          <p class="mt-1 text-sm text-textSoft">4 jugadores · 90 min · 20:00 a 21:30</p>
+        </div>
+        <button class="rounded-2xl bg-primary px-4 py-3 text-sm font-extrabold text-[#112008] shadow-glow">
+          Cobrar todo
+        </button>
+      </div>
+      <div class="mt-4 grid grid-cols-3 gap-3">
+        <div class="rounded-2xl bg-primary/10 p-3">
+          <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-primaryStrong">Cancha</p>
+          <p class="mt-2 text-lg font-extrabold">$24.000</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-3">
+          <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-textSoft">Consumos</p>
+          <p class="mt-2 text-lg font-extrabold">$9.600</p>
+        </div>
+        <div class="rounded-2xl bg-dangerSoft p-3">
+          <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-danger">Pendiente</p>
+          <p class="mt-2 text-lg font-extrabold text-danger">$8.000</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-extrabold uppercase tracking-[0.22em] text-textSoft">Jugadores</h3>
+        <button class="chip rounded-full px-3 py-2 text-sm font-semibold text-text">Agregar consumo</button>
+      </div>
+
+      <article class="card rounded-[24px] p-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h4 class="text-lg font-extrabold">Roman</h4>
+            <div class="mt-2 flex gap-2">
+              <span class="rounded-full bg-primary/12 px-3 py-1 text-xs font-bold text-primaryStrong">Cancha $6.000</span>
+              <span class="rounded-full bg-dangerSoft px-3 py-1 text-xs font-bold text-danger">Consumos $3.000</span>
+            </div>
+          </div>
+          <div class="rounded-full bg-primary/12 px-3 py-1 text-xs font-bold text-primaryStrong">
+            Cancha paga
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-[20px] bg-white/4 p-3">
+          <div class="mb-3 flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-textSoft">Pago de cancha</p>
+              <p class="mt-1 text-base font-extrabold">$6.000 por jugador</p>
+            </div>
+            <div class="rounded-full bg-primary/12 px-3 py-1 text-xs font-bold text-primaryStrong">Transferencia</div>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="rounded-2xl border border-line bg-white/5 px-3 py-3 text-sm font-bold text-text">Efectivo</button>
+            <button class="rounded-2xl bg-primary px-3 py-3 text-sm font-extrabold text-[#112008]">Transfer.</button>
+            <button class="rounded-2xl border border-amber-400/20 bg-amberSoft px-3 py-3 text-sm font-bold text-amber">Pendiente</button>
+          </div>
+        </div>
+
+        <div class="mt-3 rounded-[20px] bg-white/4 p-3">
+          <div class="mb-3 flex items-center justify-between">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-textSoft">Consumos</p>
+            <button class="chip rounded-full px-3 py-1.5 text-xs font-bold text-text">+ Agregar</button>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between rounded-2xl bg-panelStrong px-3 py-3">
+              <div>
+                <p class="font-bold">Gatorade</p>
+                <p class="text-sm text-textSoft">$3.000 · 1 un.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="rounded-full bg-white/6 px-3 py-1 text-xs font-bold text-text">Efectivo</span>
+                <button class="flex h-10 w-10 items-center justify-center rounded-2xl border border-line bg-white/5">
+                  <span class="material-symbols-outlined text-[20px]">edit</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rounded-[24px] p-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h4 class="text-lg font-extrabold">Juan</h4>
+            <div class="mt-2 flex gap-2">
+              <span class="rounded-full bg-amberSoft px-3 py-1 text-xs font-bold text-amber">Cancha pendiente</span>
+              <span class="rounded-full bg-white/6 px-3 py-1 text-xs font-bold text-textSoft">Sin consumos</span>
+            </div>
+          </div>
+          <div class="rounded-full bg-dangerSoft px-3 py-1 text-xs font-bold text-danger">
+            Debe $6.000
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-[20px] bg-white/4 p-3">
+          <div class="mb-3 flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-textSoft">Pago de cancha</p>
+              <p class="mt-1 text-base font-extrabold">$6.000 por jugador</p>
+            </div>
+            <div class="rounded-full bg-dangerSoft px-3 py-1 text-xs font-bold text-danger">Pendiente</div>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="rounded-2xl bg-panelStrong px-3 py-3 text-sm font-bold text-text">Efectivo</button>
+            <button class="rounded-2xl bg-panelStrong px-3 py-3 text-sm font-bold text-text">Transfer.</button>
+            <button class="rounded-2xl border border-amber-400/20 bg-amberSoft px-3 py-3 text-sm font-bold text-amber">Pendiente</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rounded-[24px] p-4 opacity-90">
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="text-lg font-extrabold">Pedro</h4>
+            <p class="mt-1 text-sm text-textSoft">Cancha paga · Sin consumos</p>
+          </div>
+          <div class="rounded-full bg-primary/12 px-3 py-1 text-xs font-bold text-primaryStrong">OK</div>
+        </div>
+      </article>
+
+      <article class="card rounded-[24px] p-4 opacity-90">
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="text-lg font-extrabold">Ariel</h4>
+            <p class="mt-1 text-sm text-textSoft">Cancha paga · Agua $600 pendiente</p>
+          </div>
+          <div class="rounded-full bg-dangerSoft px-3 py-1 text-xs font-bold text-danger">Debe $600</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="fixed bottom-0 left-0 right-0 z-50 border-t border-line bg-background/95 backdrop-blur-xl">
+    <div class="mx-auto max-w-lg space-y-3 px-4 pb-8 pt-4">
+      <div class="card rounded-[24px] p-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="rounded-2xl bg-primary/10 p-3">
+            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-primaryStrong">Cancha efectivo</p>
+            <p class="mt-1 text-base font-extrabold">$6.000</p>
+          </div>
+          <div class="rounded-2xl bg-primary/10 p-3">
+            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-primaryStrong">Cancha transf.</p>
+            <p class="mt-1 text-base font-extrabold">$12.000</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-3">
+            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-textSoft">Consumos efectivo</p>
+            <p class="mt-1 text-base font-extrabold">$3.000</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-3">
+            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-textSoft">Consumos transf.</p>
+            <p class="mt-1 text-base font-extrabold">$4.000</p>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between rounded-2xl bg-dangerSoft px-4 py-3">
+          <span class="text-sm font-extrabold uppercase tracking-[0.18em] text-danger">Pendiente total</span>
+          <span class="text-xl font-extrabold text-danger">$8.600</span>
+        </div>
+        <div class="mt-3 flex items-center justify-between px-1">
+          <span class="text-sm font-bold uppercase tracking-[0.18em] text-textSoft">Total general</span>
+          <span class="text-2xl font-extrabold text-text">$33.600</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <button class="rounded-[20px] border border-line bg-white/5 px-4 py-4 text-sm font-bold text-text">
+          Agregar consumo
+        </button>
+        <button class="rounded-[20px] bg-primary px-4 py-4 text-sm font-extrabold text-[#112008] shadow-glow">
+          Registrar pago
+        </button>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
